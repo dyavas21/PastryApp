@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -111,16 +117,23 @@ class CartPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          width: 26,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xffF6F5FF),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              'assets/minus.png',
-                              width: 16,
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              counter--;
+                            });
+                          },
+                          child: Container(
+                            width: 26,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xffF6F5FF),
+                            ),
+                            child: Center(
+                              child: Image.asset(
+                                'assets/minus.png',
+                                width: 16,
+                              ),
                             ),
                           ),
                         ),
@@ -128,7 +141,7 @@ class CartPage extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          '2',
+                          counter.toString(),
                           style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w500,
                             color: Color(0xff000000),
@@ -137,16 +150,23 @@ class CartPage extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
-                        Container(
-                          width: 26,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xffFA7854),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              'assets/plus.png',
-                              width: 16,
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              counter++;
+                            });
+                          },
+                          child: Container(
+                            width: 26,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xffFA7854),
+                            ),
+                            child: Center(
+                              child: Image.asset(
+                                'assets/plus.png',
+                                width: 16,
+                              ),
                             ),
                           ),
                         ),
